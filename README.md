@@ -59,4 +59,4 @@ Now you are ready to make all the other request!
 - Player Inventory
 - Match Info
 
-All this request are documentated by [@RumbleMike](https://github.com/RumbleMike) on this [Link](https://github.com/RumbleMike/ValorantAPI)
+All these requests are documentated by [@RumbleMike](https://github.com/RumbleMike) on this [Link](https://github.com/RumbleMike/ValorantAPI)
