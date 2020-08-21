@@ -1,0 +1,6 @@
+﻿.vs
+packages
+Valorant.Rest.API/bin/Debug/Newtonsoft.Json.dll
+Valorant.Rest.API/bin/Debug/Newtonsoft.Json.xml
+Valorant.Rest.API/bin/Debug/Valorant.Rest.API.pdb
+Valorant.Rest.API/obj
