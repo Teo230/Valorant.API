@@ -47,3 +47,16 @@ Now you are ready to make all the other request!
 - GetPlayer
 - GetMatches
 - GetBalance
+
+# Coming Soon
+- Competitive History
+- Player MMR
+- Player Store
+- Story Contract
+- ID List
+
+# Request to be provide by Riot
+- Player Inventory
+- Match Info
+
+All this request are documentated by [@RumbleMike](https://github.com/RumbleMike) on this [Link](https://github.com/RumbleMike/ValorantAPI)
