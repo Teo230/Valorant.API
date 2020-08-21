@@ -1,5 +1,5 @@
 # Valorant.Rest.API
-This package provides all the request that you need to retrieve data from Valorant
+This .dll provides all the request that you need to retrieve data from Valorant
 
 ## How to use
 To make any request, you need to create a **ValorantClient** object with **HttpClient** session
