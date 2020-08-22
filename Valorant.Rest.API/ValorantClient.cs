@@ -133,9 +133,10 @@ namespace Valorant.Rest.API
         /// </summary>
         /// <param name="region"></param>
         /// <returns></returns>
-        public PlayerDTO GetPlayer(RegionEnum region, string playerId)
+        public PlayerDTO GetPlayer(RegionEnum region)
         {
             dynamic data = new JObject();
+            string playerId = Post<dynamic>($"https://auth.riotgames.com/userinfo", data).sub;
             data = "[\"" + playerId + "\"]";
             List<PlayerDTO> result = Put<List<PlayerDTO>>($"{GetRightEndpoint(region)}name-service/v2/players", data);
             return result.FirstOrDefault();
