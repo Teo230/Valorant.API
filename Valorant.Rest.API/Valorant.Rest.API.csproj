@@ -45,8 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModelDTO\BalanceDTO.cs" />
+    <Compile Include="ModelDTO\CompetitiveMatchDTO.cs" />
+    <Compile Include="ModelDTO\IdListDTO.cs" />
     <Compile Include="ModelDTO\MatchDTO.cs" />
     <Compile Include="ModelDTO\PlayerDTO.cs" />
+    <Compile Include="ModelDTO\PlayerMMRDTO.cs" />
+    <Compile Include="ModelDTO\PlayerStoreDTO.cs" />
+    <Compile Include="ModelDTO\StoryContractDTO.cs" />
     <Compile Include="ModelDTO\UserParametersDTO.cs" />
     <Compile Include="Utilities\ValorantEnum.cs" />
     <Compile Include="ValorantClient.cs" />

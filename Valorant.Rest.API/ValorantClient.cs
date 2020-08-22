@@ -15,9 +15,10 @@ namespace Valorant.Rest.API
     {
         private HttpClient _session;
 
-        public ValorantClient(HttpClient session)
+        public ValorantClient(HttpClient session, string clientVersion)
         {
             _session = session;
+            _session.DefaultRequestHeaders.Add("X-Riot-ClientVersion", clientVersion);
         }
 
         #region PrivateClientRequest
@@ -100,6 +101,13 @@ namespace Valorant.Rest.API
             return null;
         }
 
+        /// <summary>
+        /// Get user parameters.
+        /// Use this method to retrieve the Bearer Token
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public UserParametersDTO GetUserParameters(string username, string password)
         {
             dynamic userData = new JObject();
@@ -111,11 +119,20 @@ namespace Valorant.Rest.API
             return Put<UserParametersDTO>("https://auth.riotgames.com/api/v1/authorization", userData);
         }
 
+        /// <summary>
+        /// Get the user Entitlements Token
+        /// </summary>
+        /// <returns></returns>
         public string GetEntitlementsToken()
         {
             return Post<dynamic>("https://entitlements.auth.riotgames.com/api/token/v1", new JObject().ToString()).entitlements_token;
         }
 
+        /// <summary>
+        /// Get Player information like Username in game, PlayerId and Tag.
+        /// </summary>
+        /// <param name="region"></param>
+        /// <returns></returns>
         public PlayerDTO GetPlayer(RegionEnum region)
         {
             dynamic data = new JObject();
@@ -123,14 +140,80 @@ namespace Valorant.Rest.API
             return result.FirstOrDefault();
         }
 
+        /// <summary>
+        /// Get Player's Match History.
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="playerId"></param>
+        /// <returns></returns>
         public MatchDTO GetMatches(RegionEnum region, string playerId)
         {
             return Get<MatchDTO>($"{GetRightEndpoint(region)}match-history/v1/history/{playerId}");
         }
 
+        /// <summary>
+        /// Get User's Valorant Points, Radianite Points, and ___
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="playerId"></param>
+        /// <returns></returns>
         public BalanceDTO GetBalance(RegionEnum region, string playerId)
         {
             return Get<BalanceDTO>($"{GetRightEndpoint(region)}store/v1/wallet/{playerId}");
+        }
+
+        /// <summary>
+        /// Shows User' Competitve History, Including Match ID, Competitve Movement, And Tier after update.
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="playerId"></param>
+        /// <returns></returns>
+        public CompetitiveMatchDTO GetCompetitiveMatch(RegionEnum region, string playerId)
+        {
+            return Get<CompetitiveMatchDTO>($"{GetRightEndpoint(region)}mmr/v1/players/{playerId}/competitiveupdates");
+        }
+
+        /// <summary>
+        /// Get Player's MMR, Including Competitve Rank, and more.
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="playerId"></param>
+        /// <returns></returns>
+        public PlayerMMRDTO GetPlayerMMR(RegionEnum region, string playerId)
+        {
+            return Get<PlayerMMRDTO>($"{GetRightEndpoint(region)}mmr/v1/players/{playerId}/competitiveupdates");
+        }
+
+        /// <summary>
+        /// Get Player's store, Including Items, Prices and Featured Bundles.
+        /// All of these ID's are listed and provided by method <see cref="GetIDList"></see>
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="playerId"></param>
+        /// <returns></returns>
+        public PlayerStoreDTO GetPlayerStore(RegionEnum region, string playerId)
+        {
+            return Get<PlayerStoreDTO>($"{GetRightEndpoint(region)}store/v2/storefront/{playerId}");
+        }
+
+        /// <summary>
+        /// Get all Items, Maps, Attachments, Sprays, GameModes, Charms, etc Ids.
+        /// </summary>
+        /// <param name="region"></param>
+        /// <returns></returns>
+        public IdListDTO GetIDList(RegionEnum region)
+        {
+            return Get<IdListDTO>($"{GetRightEndpoint(region).Replace("pd","shared")}content-service/v2/content");
+        }
+
+        /// <summary>
+        /// Get Infomation regarding the Contract
+        /// </summary>
+        /// <param name="region"></param>
+        /// <returns></returns>
+        public StoryContractDTO GetStoryContract(RegionEnum region)
+        {
+            return Get<StoryContractDTO>($"{GetRightEndpoint(region)}contract-definitions/v2/definitions/story");
         }
     }
 }
