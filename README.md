@@ -2,7 +2,7 @@
 This .dll provides all the request that you need to retrieve data from Valorant
 
 ## How to use
-To make any request, you need to create a **ValorantClient** object with **HttpClient** session
+To make any request, you need to create a **ValorantClient** object with **HttpClient** session.
 `clientVersion` parameter at the moment you can select one from this [Link](https://github.com/RumbleMike/ValorantAPI/blob/master/Docs/ClientVersions.md)
 
 ```c#
