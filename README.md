@@ -3,10 +3,11 @@ This .dll provides all the request that you need to retrieve data from Valorant
 
 ## How to use
 To make any request, you need to create a **ValorantClient** object with **HttpClient** session
+`clientVersion` parameter at the moment you can select one from this [Link](https://github.com/RumbleMike/ValorantAPI/blob/master/Docs/ClientVersions.md)
 
 ```c#
 HttpClient session = new HttpClient();
-var valorantClient = new ValorantClient(session);
+var valorantClient = new ValorantClient(session, clientVersion);
 ```
 
 When you create the valorantClient, you are enable to make the first request to retrieve the **Bearer Token**
@@ -24,7 +25,7 @@ Once you saved the BearerToken, you need to add to `session` as header and re-cr
 
 ```c#
 session.DefaultRequestHeaders.Add("Authorization", "Bearer " + BearerToken);
-var valorantClient = new ValorantClient(session);
+var valorantClient = new ValorantClient(session, clientVersion);
 ```
 
 Now you can request the **EntitlementsToken**
@@ -36,7 +37,7 @@ string EntitlementsToken = valorantClient.GetEntitlementsToken();
 Add also EntitlementsToken to `session` as header and re-create the `ValorantClient`
 ```c#
 session.DefaultRequestHeaders.Add("X-Riot-Entitlements-JWT", EntitlementsToken);
-var valorantClient = new ValorantClient(session);
+var valorantClient = new ValorantClient(session, clientVersion);
 ```
 
 Now you are ready to make all the other request!
@@ -47,13 +48,11 @@ Now you are ready to make all the other request!
 - GetPlayer
 - GetMatches
 - GetBalance
-
-# Coming Soon
-- Competitive History
-- Player MMR
-- Player Store
-- Story Contract
-- ID List
+- GetCompetitiveMatch
+- GetPlayerMMR
+- GetPlayerStore
+- GetStoryContract
+- GetIDList
 
 # Request to be provide by Riot
 - Player Inventory
