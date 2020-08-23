@@ -18,20 +18,19 @@ namespace Valorant.Rest.API.ModelDTO
             public string ID { get; set; }
             public string DataAssetID { get; set; }
             public string CurrencyID { get; set; }
-            public List<Item> Items { get; set; }
+            public List<Items> Items { get; set; }
         }
 
-        public class Item
+        public class Items
         {
-            [JsonProperty("Item")]
-            public Item1 Item1 { get; set; }
+            public Item Item { get; set; }
             public int BasePrice { get; set; }
             public string CurrencyID { get; set; }
             public int DiscountPercent { get; set; }
             public bool IsPromoItem { get; set; }
         }
 
-        public class Item1
+        public class Item
         {
             public string ItemTypeID { get; set; }
             public string ItemID { get; set; }
@@ -49,23 +48,7 @@ namespace Valorant.Rest.API.ModelDTO
             public string ID { get; set; }
             public string DataAssetID { get; set; }
             public string CurrencyID { get; set; }
-            public List<Item2> Items { get; set; }
-        }
-
-        public class Item2
-        {
-            public Item3 Item { get; set; }
-            public int BasePrice { get; set; }
-            public string CurrencyID { get; set; }
-            public int DiscountPercent { get; set; }
-            public bool IsPromoItem { get; set; }
-        }
-
-        public class Item3
-        {
-            public string ItemTypeID { get; set; }
-            public string ItemID { get; set; }
-            public int Amount { get; set; }
+            public List<Items> Items { get; set; }
         }
 
         public class Skinspanellayout
