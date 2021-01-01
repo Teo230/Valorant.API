@@ -1,4 +1,4 @@
-# Valorant.Rest.API
+# Valorant.API
 This .dll provides all the request that you need to retrieve data from Valorant
 
 ## How to use
