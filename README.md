@@ -1,4 +1,4 @@
-# Valorant.API
+# Valorant.API - [OBSOLETE] - New project [here](https://github.com/ValorantAppDevelopers/Valorant-NET)
 This .dll provides all the request that you need to retrieve data from Valorant
 
 ## How to use
